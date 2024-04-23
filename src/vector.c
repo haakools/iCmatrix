@@ -1,4 +1,4 @@
-#include "vector.h"
+#include "include/vector.h"
 #include <assert.h>
 #include <stdlib.h>
 
@@ -21,7 +21,7 @@ typedef struct r_matrix {
 // column-wise matrix
 //typedef struct c_matrix { 
 //    int n_cols;
-//    vector cols[];
+//    Vector cols[];
 //} c_matrix;
 
 
