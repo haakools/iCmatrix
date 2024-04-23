@@ -23,6 +23,6 @@ typedef struct c_matrix {
 typedef struct r_matrix rMatrix;
 
 Vector* make_vector(int length, float *elements);
-
+void add_vectors(Vector* v1, Vector* v2, Vector* v3);
 
 #endif /* VECTOR_H */
