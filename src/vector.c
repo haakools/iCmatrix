@@ -1,38 +1,49 @@
+#include "vector.h"
+#include <assert.h>
+#include <stdlib.h>
 
 
-# include <assert.h>
-
-#include <vector.h>
-
-typedef struct {
+typedef struct vector {
+    int size;
     int length;
-    float array[];
-} vector;
+    float *array;
+} Vector;
+
 
 
 // row-wise matrix
-typedef struct { 
+typedef struct r_matrix { 
     int rows;
-    vector row[];
+    Vector row[];
 } r_matrix;
 
+
 // column-wise matrix
-typedef struct { 
-    int n_cols;
-    vector cols[];
-} c_matrix;
+//typedef struct c_matrix { 
+//    int n_cols;
+//    vector cols[];
+//} c_matrix;
 
 
 // vector-maker function with sanity check :)
-vector make_vector(int length, float elements[]) {
+Vector* make_vector(int length, float *elements) {
 
     assert(length == sizeof(&elements)/sizeof(float));
-    vector vec;
-    vec.length = length;
 
-    for (int i=0; i<length; i++){
-        vec.array[i] = elements[i];
+    Vector* vec = malloc(sizeof(Vector));
+
+    vec->length = length;
+    if (vec->array != NULL) {
+        // Assigning the data
+        vec->array = malloc(length*sizeof(float));
+        for (int i=0; i < length; i++){
+            vec->array[i] = elements[i]; // pointer to reference?
+        }
+    } else {
+        free(vec);
+        vec = NULL;
     }
+
     return vec;
 }
 
