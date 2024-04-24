@@ -1,8 +1,5 @@
 
 #include <stdio.h>
-
-
-// 
 #include "include/vector.h"
 
 
@@ -11,27 +8,36 @@ int main(int argc, char *argv[]){
     printf("HERE COMES THE VECTOR\n");
 
     int length = 5;
-    Vector* v1 = make_vector(length, (float[]){1.0, 2.0, 3.0, 4.0, 5.0});
-    Vector* v2 = make_vector(length, (float[]){2, 2, 2, 2, 2});
-    Vector* v3 = make_vector(length, (float[]){0, 0, 0, 0, 0});
+    Vector* pV1 = make_vector(length, (float[]){1.0, 2.0, 3.0, 4.0, 5.0});
+    Vector* pV2 = make_vector(length, (float[]){2, 2, 2, 2, 2});
+    Vector* pV3 = make_vector(length, (float[]){0, 0, 0, 0, 0});
    
   
-    add_vectors(v1, v2, v3);
-
-    if (v1 != NULL) {
-        printf("Length of vector: %d\n", v3->length);
-    } else {
-        printf("The vector v1 is NULL");
-    };
+    add_vectors(pV1, pV2, pV3);
     
-    if (v3 != NULL) {
-        for (int i=0; i<5; i++) {
-            printf("element %i: \t %1.2f \n",i,v3->array[i] );
-        };
-    }
+    // Sanity
+    if (pV1 != NULL) {
+        printf("Length of Vector: %d\n", pV3->length);
+    } else {
+        printf("The Vector V1 is NULL");
+    };
+
+    print_vector(pV3);
 
 
+    printf("Scaling with 0.5\n");
+    float scale = 0.5;
+    scale_vector(pV3, scale);
+    print_vector(pV3);
+    
+    printf("Subtracting with Vector 2\n");
+    subtract_vectors(pV3, pV2, pV3);
+    print_vector(pV3);
 
-
+    printf("Squaring the vector\n");
+    multiply_vectors(pV3, pV3, pV3);
+    print_vector(pV3);
     return 0;
+
+
 }

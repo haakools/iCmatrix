@@ -9,20 +9,11 @@ struct vector {
 };
 typedef struct vector Vector;
 
-struct r_matrix { 
-    int rows;
-    Vector row[];
-};
-typedef struct r_matrix cMatrix;
-
-typedef struct c_matrix { 
-    int n_cols;
-    Vector cols[];
-} c_matrix;
-
-typedef struct r_matrix rMatrix;
-
 Vector* make_vector(int length, float *elements);
 void add_vectors(Vector* v1, Vector* v2, Vector* v3);
+void multiply_vectors(Vector* v1, Vector* v2, Vector* v3);
+void subtract_vectors(Vector* v1, Vector* v2, Vector* v3);
+void scale_vector(Vector* v1, float scale);
+void print_vector(Vector* v1);
 
 #endif /* VECTOR_H */
